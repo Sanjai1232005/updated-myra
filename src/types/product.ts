@@ -7,14 +7,6 @@ export interface Product {
   image: string;
   description: string;
   rating?: number;
-  ingredients?: string[];
-  nutritionalInfo?: {
-    calories: number;
-    protein: string;
-    carbs: string;
-    fat: string;
-  };
-  deliveryTime?: string;
   category: 'corporate' | 'festive' | 'birthday' | 'catering';
   inStock: boolean;
   featured: boolean;
@@ -28,12 +20,6 @@ export interface ProductFormData {
   image: string;
   description: string;
   rating: number;
-  ingredients: string;
-  calories: number;
-  protein: string;
-  carbs: string;
-  fat: string;
-  deliveryTime: string;
   category: 'corporate' | 'festive' | 'birthday' | 'catering';
   inStock: boolean;
   featured: boolean;

@@ -10,13 +10,6 @@ interface Product {
   description: string;
   rating?: number;
   ingredients?: string[];
-  nutritionalInfo?: {
-    calories: number;
-    protein: string;
-    carbs: string;
-    fat: string;
-  };
-  deliveryTime?: string;
 }
 
 interface ProductModalProps {
@@ -28,7 +21,6 @@ interface ProductModalProps {
 
 const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose }) => {
   const [quantity, setQuantity] = useState(1);
-  const [selectedVariant, setSelectedVariant] = useState('Regular');
   const { addToCart } = useCart();
 
   if (!isOpen || !product) return null;
@@ -42,7 +34,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
   const incrementQuantity = () => setQuantity(prev => prev + 1);
   const decrementQuantity = () => setQuantity(prev => Math.max(1, prev - 1));
 
-  const variants = ['Regular', 'Large', 'Family Pack'];
   const features = [
     { icon: Clock, text: 'Fresh & Hot', color: 'text-green-600' },
     { icon: Truck, text: 'Fast Delivery', color: 'text-blue-600' },
@@ -86,6 +77,19 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
               <p className="text-gray-600 text-lg leading-relaxed">{product.description}</p>
             </div>
 
+            {product.ingredients && (
+              <div className="pt-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Box Items</h3>
+                <div className="flex flex-wrap gap-3">
+                  {product.ingredients.map((ingredient, index) => (
+                    <span key={index} className="bg-gray-200 text-gray-800 text-base font-medium mr-2 px-4 py-2 rounded-full">
+                      {ingredient}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Features */}
             <div className="grid grid-cols-3 gap-4">
               {features.map((feature, index) => (
@@ -94,64 +98,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
                   <span className="text-sm font-medium text-gray-700">{feature.text}</span>
                 </div>
               ))}
-            </div>
-
-            {/* Variants */}
-            <div className="space-y-3">
-              <h3 className="text-lg font-semibold text-gray-900">Choose Size</h3>
-              <div className="flex space-x-3">
-                {variants.map((variant) => (
-                  <button
-                    key={variant}
-                    onClick={() => setSelectedVariant(variant)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                      selectedVariant === variant
-                        ? 'bg-green-600 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    {variant}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Ingredients */}
-            <div className="space-y-3">
-              <h3 className="text-lg font-semibold text-gray-900">Ingredients</h3>
-              <div className="flex flex-wrap gap-2">
-                {(product.ingredients || ['Fresh vegetables', 'Premium spices', 'Organic herbs', 'Natural flavors']).map((ingredient, index) => (
-                  <span
-                    key={index}
-                    className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
-                  >
-                    {ingredient}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Nutritional Info */}
-            <div className="bg-gray-50 rounded-lg p-4 space-y-3">
-              <h3 className="text-lg font-semibold text-gray-900">Nutritional Information</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                <div className="text-center">
-                  <div className="font-bold text-green-600">{product.nutritionalInfo?.calories || 250}</div>
-                  <div className="text-gray-600">Calories</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-bold text-blue-600">{product.nutritionalInfo?.protein || '12g'}</div>
-                  <div className="text-gray-600">Protein</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-bold text-purple-600">{product.nutritionalInfo?.carbs || '18g'}</div>
-                  <div className="text-gray-600">Carbs</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-bold text-orange-600">{product.nutritionalInfo?.fat || '8g'}</div>
-                  <div className="text-gray-600">Fat</div>
-                </div>
-              </div>
             </div>
 
             {/* Add to Cart Section */}
@@ -193,7 +139,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
               </div>
 
               <div className="text-center text-sm text-gray-500">
-                🚚 Free delivery on orders above ₹500 • ⏱️ Delivery in {product.deliveryTime || '30-45 mins'}
+                🚚 Free delivery on orders above ₹500
               </div>
             </div>
           </div>

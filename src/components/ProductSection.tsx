@@ -9,14 +9,6 @@ interface Product {
   image: string;
   rating?: number;
   description: string;
-  ingredients?: string[];
-  nutritionalInfo?: {
-    calories: number;
-    protein: string;
-    carbs: string;
-    fat: string;
-  };
-  deliveryTime?: string;
 }
 
 interface ProductSectionProps {
@@ -125,13 +117,6 @@ const ProductSection: React.FC<ProductSectionProps> = ({
                 <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">
                   {product.description}
                 </p>
-
-                {product.deliveryTime && (
-                  <div className="flex items-center text-sm text-gray-500">
-                    <span className="mr-1">🚚</span>
-                    <span>{product.deliveryTime}</span>
-                  </div>
-                )}
 
                 <div className="flex items-center justify-between pt-4">
                   <div>
