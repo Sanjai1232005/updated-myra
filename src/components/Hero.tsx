@@ -3,7 +3,7 @@ import { ArrowRight, Clock, Truck, Shield } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-br from-green-100 to-yellow-100 min-h-screen flex items-center">
+    <section className="min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -48,7 +48,7 @@ const Hero = () => {
           <div className="relative">
             <div className="relative z-10">
               {/* Main Food Box */}
-              <div className="bg-white p-8 rounded-3xl shadow-2xl transform rotate-6 hover:rotate-3 transition-transform duration-500">
+              <div className="p-8 rounded-3xl shadow-2xl transform rotate-6 hover:rotate-3 transition-transform duration-500">
                 <div className="aspect-square bg-gradient-to-br from-green-200 to-yellow-200 rounded-2xl flex items-center justify-center">
                   <div className="text-6xl">🥗</div>
                 </div>

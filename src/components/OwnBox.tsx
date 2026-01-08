@@ -103,7 +103,7 @@ const OwnBox: React.FC = () => {
     : items.filter(item => item.category === activeCategory);
 
   return (
-    <section id="own-box" className="py-20 bg-gradient-to-br from-green-50 via-white to-yellow-50">
+    <section id="own-box" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">

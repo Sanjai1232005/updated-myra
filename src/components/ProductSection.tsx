@@ -52,7 +52,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
 
   if (products.length === 0) {
     return (
-      <section id={id} className="py-20 bg-white">
+      <section id={id} className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">{title}</h2>
@@ -71,7 +71,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   }
 
   return (
-    <section id={id} className="py-20 bg-white">
+    <section id={id} className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">{title}</h2>

@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode }) => {
 
   if (viewMode === 'list') {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-6 flex items-center space-x-6 hover:shadow-xl transition-shadow">
+      <div className="rounded-xl shadow-lg p-6 flex items-center space-x-6 hover:shadow-xl transition-shadow">
         <div className="w-24 h-24 bg-gradient-to-br from-green-100 to-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
           {product.image.startsWith('http') ? (
             <img src={product.image} alt={product.name} className="w-full h-full object-cover rounded-xl" />
@@ -53,7 +53,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode }) => {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 overflow-hidden">
+    <div className="rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 overflow-hidden">
       <div className="h-48 bg-gradient-to-br from-green-100 to-yellow-100 flex items-center justify-center">
         {product.image.startsWith('http') ? (
           <img src={product.image} alt={product.name} className="w-full h-full object-cover" />

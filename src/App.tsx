@@ -309,7 +309,7 @@ const AppContent = () => {
 function App() {
   return (
     <CartProvider>
-      <div className="min-h-screen">
+      <div className="min-h-screen app-background">
         <AppContent />
       </div>
     </CartProvider>
